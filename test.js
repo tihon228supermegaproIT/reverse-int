@@ -1,21 +1,23 @@
 function reverse(number) {
-  // Преобразуем число в строку
-  var numString = number.toString();
+  let reversedNumber = 0;
+  let isNegative = number < 0;
   
-  // Преобразуем строку в массив символов
-  var numArray = numString.split("");
+  // Convert the number to positive if it is negative
+  if (isNegative) {
+    number *= -1;
+  }
   
-  // Меняем местами элементы массива
-  numArray = numArray.reverse();
+  // Reverse the digits of the number
+  while (number > 0) {
+    const digit = number % 10;
+    reversedNumber = (reversedNumber * 10) + digit;
+    number = Math.floor(number / 10);
+  }
   
-  // Преобразуем массив обратно в строку
-  var reversedString = numArray.join("");
+  // Convert the number back to negative if necessary
+  if (isNegative) {
+    reversedNumber *= -1;
+  }
   
-  // Преобразуем строку обратно в число
-  var reversedNumber = parseInt(reversedString);
-  
-  // Возвращаем результат
   return reversedNumber;
 }
-  assert.equal(reversed, 535);
-});
